@@ -22,3 +22,11 @@ self.addEventListener('activate', function(event){
     }))
   }))
 });
+
+self.addEventListener('fetch', function(event){
+  console.log(event);
+
+  if(event.request.url == "http://lorempixel.com/400/200/cats/6/"){
+    event.respondWith(self.fetch("http://lorempixel.com/400/200/cats/1/", {mode: "no-cors"}));
+  }
+});
